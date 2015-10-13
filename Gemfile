@@ -3,6 +3,16 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
+
+# Devise
+# Setup
+#   a) Bootstrap Devise in this app:  rails generate devise:install
+#      => create  config/initializers/devise.rb
+#      => create  config/locales/devise.en.yml
+#   b) Need to tell Devise what Model and Database table we'll use for authentication.
+#      $ rails g devise user
+gem 'devise'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

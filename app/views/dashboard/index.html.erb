@@ -1,6 +1,7 @@
 <header>
   <h1>
-    Welcome to Shine!
+    <%# If email address is shown then user has been authenticated. %>
+    Welcome to Shine, <%= current_user.email %>
   </h1>
   <h2>
     We're using Rails <%= Rails.version %>
