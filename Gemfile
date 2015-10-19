@@ -13,6 +13,9 @@ gem 'rails', '4.2.4'
 #      $ rails g devise user
 gem 'devise'
 
+# Install below gem running: "bundle"
+gem 'bower-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
