@@ -13,7 +13,12 @@ gem 'rails', '4.2.4'
 #      $ rails g devise user
 gem 'devise'
 
-# Install below gem running: "bundle"
+# 1st: Install below gem running: "bundle"
+#      FYI: Bower-rails will look for Bowerfile to find a list of dependencies. Similar to Gemfile.
+# 2nd: Create Bowerfile in this application root directory: vim Bowerfile
+#      Then add this line to the Bowerfile: asset 'bootstrap-sass-official'
+# 3rd: Install Bootstrap thru Bower by running: rake bower:install
+#      FYI: bower-rails places files in "/vendor/assets/bower_components/"
 gem 'bower-rails'
 
 # Use postgresql as the database for Active Record
