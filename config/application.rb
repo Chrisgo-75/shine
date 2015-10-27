@@ -31,5 +31,15 @@ module Shine
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Below has been added by developer to override Rails default behaviour:
+    # Rails by default creates a single migration using Ruby. Since Rails doesn't know about Postgres
+    # constraints, have overridden the default to having Rails write the single migration in SQL.
+    config.active_record.schema_format = :sql
+    # After adding the above line:
+    #   1- $ rm db/schema.rb  # removes db/schema.rb
+    #   2- $ rake db:migrate  # creates db/structure.sql
+    #   3- $ RAILS_ENV=test bundle exec rake db:drop
+    #   4- $ RAILS_ENV=test bundle exec rake db:create
   end
 end
