@@ -1,4 +1,4 @@
-== README
+# README
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -24,5 +24,7 @@ Things you may want to cover:
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Populating Test Data  
+1. Run "rake db:seeds" which will populate 350,000 rows of real-looking data in "Customers" db table.  
+  * The script location which is ran is located at `/db/seeds.rb`  
+
