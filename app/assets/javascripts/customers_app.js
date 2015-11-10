@@ -8,7 +8,13 @@ app.controller('CustomerSearchController', [
     //}
     var page = 0;
     $scope.customers = [];
+
+    // Start sending trips to the server after user has typed in more than three characters.
     $scope.search = function(searchTerm) {
+      if (searchTerm.length < 3) {
+        return;
+      }
+
       $http.get('/customers.json', { 'params': { 'keywords': searchTerm, "page": page } }
       ).success(
         function(data,status,headers,config) {
