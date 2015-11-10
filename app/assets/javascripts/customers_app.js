@@ -6,9 +6,10 @@ app.controller('CustomerSearchController', [
     //$scope.search = function(searchTerm) {
     //  $scope.searchedFor = searchTerm;
     //}
+    var page = 0;
     $scope.customers = [];
     $scope.search = function(searchTerm) {
-      $http.get('/customers.json', { 'params': { 'keywords': searchTerm } }
+      $http.get('/customers.json', { 'params': { 'keywords': searchTerm, "page": page } }
       ).success(
         function(data,status,headers,config) {
           $scope.customers = data;
@@ -39,6 +40,18 @@ app.controller('CustomerSearchController', [
       //    "created_at":"2015-03-04",
       //  }
       //]
-    }
-  }
+    }; // END $scope.search = function(searchTerm) {
+
+    $scope.previousPage = function() {
+      if (page > 0) {
+        page = page - 1;
+        $scope.search($scope.keywords);
+      }
+    }; // END $scope.previousPage = function()
+
+    $scope.nextPage = function() {
+      page = page + 1;
+      $scope.search($scope.keywords);
+    }; // END $scope.nextPage = function()
+  } // END function($scope , $http) {
 ]);
