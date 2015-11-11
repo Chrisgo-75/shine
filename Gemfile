@@ -49,6 +49,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Install gem and depency gems: $ bundle install
+  # Add necessary configuration by running: $ rails g rspec:install
+  # Edit /spec/spec_helper.rb which contains the majority of RSpec's configuration.
+  #
+  gem 'rspec-rails'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'faker' # not using this in production environment.
