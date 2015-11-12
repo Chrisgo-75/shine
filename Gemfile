@@ -62,6 +62,11 @@ group :development, :test do
   # Resets database back to a prestine state w/o using transactions (although it can).
   gem 'database_cleaner'
 
+  # Install & Setup
+  # $ bundle
+  # $ rails g teaspoon:install --no-coffee
+  gem 'teaspoon-jasmine'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'faker' # not using this in production environment.
