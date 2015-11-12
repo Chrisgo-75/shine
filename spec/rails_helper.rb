@@ -7,6 +7,19 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+
+# Am using Poltergeist (PhantomJS) which means the below is needed:
+#   Note that we’re using spec/rails_helper.rb and not spec/spec_helper.rb because these
+#     tests require the full power of Rails to execute (namely, access to ActiveRecord
+#     and the path helpers).
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+Capybara.default_driver    = :poltergeist
+# To make testing be seam seamless, add "database_cleaner" gem and
+# a) within this file set config.use_transactional_fixtures = false
+# b) within this file added code within section labeled # ---- using DatabaseCleaner's :transaction strategy which replaces RSpec "feature"
+
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -33,7 +46,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -49,4 +62,26 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  # ---- using DatabaseCleaner's :transaction strategy which replaces RSpec "feature"
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :type => :feature) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+  # ---- END to using DatabaseCleaner's :transaction strategy which replaces RSpec "feature"
 end

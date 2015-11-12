@@ -55,6 +55,13 @@ group :development, :test do
   #
   gem 'rspec-rails'
 
+  # Brings in Capybara as a dependency.
+  # Edit rails_helper.rb file
+  gem 'poltergeist'
+
+  # Resets database back to a prestine state w/o using transactions (although it can).
+  gem 'database_cleaner'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'faker' # not using this in production environment.
