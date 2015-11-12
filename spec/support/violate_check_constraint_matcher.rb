@@ -7,6 +7,9 @@ RSpec::Matchers.define :violate_check_constraint do |constraint_name|
   #
   match do |code_to_test|
     begin
+      # Passed in "code_to_test" is:
+      #   #<Proc:0x000000056bc9e8@/home/cgarndt/ror_dev/tutorials/pragprog_rails_angular_postgres/shine/spec/models/user_spec.rb:15>
+      #   So it is calling the rspec test within user_spec, on line 15.
       code_to_test.()
       # We want an exception to occur! If it doesn't then the next line "false" will fail our test.
       false
