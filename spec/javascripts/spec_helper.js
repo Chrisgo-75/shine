@@ -32,3 +32,19 @@
 // the configuration and use this file as a manifest.
 //
 // For more information: http://github.com/modeset/teaspoon
+
+
+// Adding a Jasmine Custom Matcher
+beforeEach(function(){
+  jasmine.addMatchers({
+    toEqualData: function(util,customEqualityTesters) {
+      return {
+        compare: function(actual,expected) {
+          var result = {};
+          result.pass = angular.equals(actual, expected);
+          return result;
+        }
+      };
+    }
+  });
+});
