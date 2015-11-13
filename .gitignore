@@ -41,6 +41,7 @@ doc/
 tnsnames.ora
 *~ # for jedit files
 .secret
+/spec/examples.txt
 
 # RubyMine files for database setup
 mysql-connector-java-5.1.18-bin.jar
