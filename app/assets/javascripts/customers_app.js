@@ -1,4 +1,18 @@
-var app = angular.module('customers',[]);
+// Declare a variable which points to our Angular app.
+// Declare Angular app's dependencies (Modules => ngRoute, templates)
+var app = angular.module('customers',['ngRoute','templates']);
+
+
+app.config([
+  "$routeProvider",
+  function($routeProvider) {
+    $routeProvider.when("/", {
+      controller: "CustomerSearchController",
+      templateUrl: "customer_search.html"
+    });
+  }
+]);
+
 
 app.controller('CustomerSearchController', [
   '$scope','$http',

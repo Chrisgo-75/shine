@@ -48,6 +48,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Compiles html templates into Javascript so that they'll be bundles in our application's asset bundle. Also
+# setups necessary configuration within Angular.
+# Setup:
+#   a) after "bundle install", add the below to /assets/javascripts/application.js
+#      //= require angular-rails-templates
+#      // Angular-rails-templates assumes our HTML templates are in app/assets/javascripts/templates
+#      //= require_tree ./templates
+#
+gem 'angular-rails-templates'
+# (2015/11) Pin Sprockets to 2.x due to version 3.x breaks angular-rails-templates.
+gem 'sprockets', '~> 2.0'
+
 group :development, :test do
   # Install gem and depency gems: $ bundle install
   # Add necessary configuration by running: $ rails g rspec:install
