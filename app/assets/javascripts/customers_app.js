@@ -9,14 +9,17 @@ app.config([
     $routeProvider.when("/", {
       controller: "CustomerSearchController",
       templateUrl: "customer_search.html"
+    }).when('/:id',{
+      controller: 'CustomerDetailController',
+      templateUrl: 'customer_detail.html'
     });
   }
 ]);
 
 
 app.controller('CustomerSearchController', [
-  '$scope','$http',
-  function($scope , $http) {
+  '$scope','$http','$location',
+  function($scope , $http, $location) {
     //$scope.search = function(searchTerm) {
     //  $scope.searchedFor = searchTerm;
     //}
@@ -73,5 +76,33 @@ app.controller('CustomerSearchController', [
       page = page + 1;
       $scope.search($scope.keywords);
     }; // END $scope.nextPage = function()
-  } // END function($scope , $http) {
-]);
+
+    // viewDetails will create URL using customer's ID
+    $scope.viewDetails = function(customer) {
+      $location.path('/' + customer.id);
+    }
+  } // END function($scope , $http, $location) {
+]); // END app.controller('CustomerSearchController', [
+
+
+app.controller("CustomerDetailController", [
+  "$scope","$http","$routeParams",
+  function($scope , $http , $routeParams) {
+
+    // Make the AJAX call and set $scope.customer...
+    //   a) $routeParams provides access to the specific ID from the Angular route.
+    //   b) inside the "success" callback, we set $scope.customer to the value we get via
+    //      $scope.customer = data;
+    //
+    var customerId = $routeParams.id;
+    $scope.customer = {};
+
+    $http.get(
+      "/customers/" + customerId + ".json"
+    ).success(function(data,status,headers,config) {
+      $scope.customer = data;
+    }).error(function(data,status,headers,config) {
+      alert("There was a problem: " + status);
+    });
+  }
+]); // END app.controller("CustomerDetailController", [
