@@ -48,7 +48,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Compiles html templates into Javascript so that they'll be bundles in our application's asset bundle. Also
+# Compiles html templates into Javascript so that they'll be bundled in our application's asset bundle. Also
 # setups necessary configuration within Angular.
 # Setup:
 #   a) after "bundle install", add the below to /assets/javascripts/application.js
