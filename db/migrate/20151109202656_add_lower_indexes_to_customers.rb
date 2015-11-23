@@ -1,4 +1,6 @@
 class AddLowerIndexesToCustomers < ActiveRecord::Migration
+  # cmd to generate this migration file w/o content
+  #   rails g migration add-lower-indexes-to-customers
   def up
     execute %{
       CREATE INDEX
