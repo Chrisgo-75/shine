@@ -10,7 +10,9 @@
 # $ rake db:seed
 
 if Customer.all.count == 0
-  350_000.times do |i|
+  # 350_000.times do |i| # ebook said to create 350,000 rows of data but that takes a min of
+  #                        of 30 minutes.
+  500.times do |i|
     Customer.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
