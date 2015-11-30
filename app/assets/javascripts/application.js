@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-route
+//= require angular-resource
 //= require angular-rails-templates
 // Angular-rails-templates assumes our HTML templates are in app/assets/javascripts/templates
 //= require_tree ./templates
