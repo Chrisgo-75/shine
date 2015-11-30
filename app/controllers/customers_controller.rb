@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
     # customer = Customer.find(params[:id]) # Used to query data BEFORE using Materialized PostgreSQL View
 
     respond_to do |format|
-      format.json { render json: customer }
+      format.json { render json: customer_detail }
     end
   end
 
