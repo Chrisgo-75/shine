@@ -29,7 +29,9 @@ class CustomersController < ApplicationController
 
 
   def show
-    customer = Customer.find(params[:id])
+    customer_detail = CustomerDetail.find(params[:id])
+    # customer = Customer.find(params[:id]) # Used to query data BEFORE using Materialized PostgreSQL View
+
     respond_to do |format|
       format.json { render json: customer }
     end
