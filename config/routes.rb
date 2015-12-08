@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get 'angular_test', to: 'angular_test#index'
 
+  # Setting up a "endpoint" that will simulate a service that sends me back credit card info
+  get 'fake_billing', to: 'fake_billing#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

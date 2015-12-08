@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
     # customer = Customer.find(params[:id]) # Used to query data BEFORE using Materialized PostgreSQL View
 
     # Can see the asynchronous promise in action by adding a call to sleep.
-    sleep 5
+    sleep 2
 
     respond_to do |format|
       format.json { render json: customer_detail }

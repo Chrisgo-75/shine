@@ -119,3 +119,12 @@ app.controller("CustomerDetailController", [
     alert("AJAX Call Initiated!");
   }
 ]); // END app.controller("CustomerDetailController", [
+
+
+app.controller("CustomerCreditCardController", [
+  "$scope","$resource",
+  function($scope , $resource) {
+    var CreditCardInfo = $resource('/fake_billing.json')
+    $scope.creditCard = CreditCardInfo.get({ "cardholder_id": 1234})
+  }
+]); // END app.controller("CustomerCreditCardController", [
