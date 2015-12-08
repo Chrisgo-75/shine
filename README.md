@@ -25,6 +25,17 @@ Things you may want to cover:
 
 
 ## Populating Test Data  
-1. Run "rake db:seeds" which will populate 350,000 rows of real-looking data in "Customers" db table.  
-  * The script location which is ran is located at `/db/seeds.rb`  
 
+1. Run "rake db:seeds" which will populate 350,000 rows of real-looking data in "Customers" db table.  
+
+  * The script location which is ran is located at `/db/seeds.rb`
+
+## Running Tests
+
+1. `$ rspec spec/`
+
+* Will run "*.rb" file tests within /spec
+
+2. `$ rake teaspoon`
+
+* Will run tests within /spec/javascripts/ ... ".js" files.
