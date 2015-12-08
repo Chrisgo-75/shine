@@ -95,7 +95,7 @@
           </h2>
         </header>
         <section class="panel-body">
-          <article ng-controller="CustomerCreditCardController">
+          <article ng-controller="CustomerCreditCardController" ng-init="setCardholderId(customerId)">
             <div class="row">
               <div ng-if="!creditCard.$resolved">
 

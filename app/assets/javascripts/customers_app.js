@@ -107,13 +107,15 @@ app.controller("CustomerDetailController", [
     //});
 
     // Below being used when angular-resource was enabled
-    var customerId = $routeParams.id;
+    // var customerId = $routeParams.id;
+    // Changed the above local variable to a "$scope" variable so that the View can access the variable.
+    $scope.customerId = $routeParams.id;
     var Customer = $resource('/customers/:customerId.json');
 
     // Below is a asynchronous call.
     // The object we get back from 'Customer.get' is a "promise" that, when resolved, will set properties on itself
     //   based on the results of the call.
-    $scope.customer = Customer.get({ "customerId": customerId });
+    $scope.customer = Customer.get({ "customerId": $scope.customerId });
     // An alert is sent to user to notify of AJAX call was just sent and if you click "ok" quick enough will show
     // blank page which demonstrates AJAX isn't completed quite yet b/c of "sleep 5" in Controller action.
     alert("AJAX Call Initiated!");
@@ -125,6 +127,11 @@ app.controller("CustomerCreditCardController", [
   "$scope","$resource",
   function($scope , $resource) {
     var CreditCardInfo = $resource('/fake_billing.json')
-    $scope.creditCard = CreditCardInfo.get({ "cardholder_id": 1234})
-  }
+    // Hard coded customerid: $scope.creditCard = CreditCardInfo.get({ "cardholder_id": 1234})
+    $scope.setCardholderId = function(cardholderId) {
+      $scope.creditCard = CreditCardInfo.get(
+        {"cardholder_id": cardholderId}
+      )
+    }
+  } // END function($scope , $resource) {
 ]); // END app.controller("CustomerCreditCardController", [
