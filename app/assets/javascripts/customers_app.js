@@ -1,6 +1,6 @@
 // Declare a variable which points to our Angular app.
 // Declare Angular app's dependencies (Modules => ngRoute, templates)
-var app = angular.module('customers',['ngRoute','ngResource','templates']);
+var app = angular.module('customers',['ngRoute','ngResource','ngMessages','templates']);
 
 
 app.config([
@@ -119,7 +119,36 @@ app.controller("CustomerDetailController", [
     // An alert is sent to user to notify of AJAX call was just sent and if you click "ok" quick enough will show
     // blank page which demonstrates AJAX isn't completed quite yet b/c of "sleep 5" in Controller action.
     alert("AJAX Call Initiated!");
-  }
+
+
+    // Keep ...
+    //$scope.save = function() {
+    //  alert($scope.form.$valid);
+    //  //window.blah = $scope.form;
+    //  if ($scope.form.email.$valid) {
+    //    alert("Email is valid");
+    //  } else if ($scope.form.email.$error.required) {
+    //    alert("Email is required");
+    //  } else if ($scope.form.email.$error.email) {
+    //    alert("Email must look like an email");
+    //  }
+    //} // END $scope.save = function() {
+    $scope.save = function() {
+      if ($scope.form.$valid) {
+        $scope.customer.$save(
+          function() {
+            $scope.form.$setPristine();
+            $scope.form.$setUntouched();
+            alert("Save Successful!");
+          },
+          function() {
+            alert("Save Failed :(");
+          }
+        );
+      }
+    }
+
+  } // END function($scope , $routeParams , $resource) {
 ]); // END app.controller("CustomerDetailController", [
 
 
