@@ -41,5 +41,20 @@ module Shine
     #   2- $ rake db:migrate  # creates db/structure.sql
     #   3- $ RAILS_ENV=test bundle exec rake db:drop
     #   4- $ RAILS_ENV=test bundle exec rake db:create
+
+    # Custom Edit to have Rails use Bootstrap's Glyphicons and precompile them successfully.
+    if Rails.version =~ /^5/
+    else
+      # Do not swallow errors in after_commit/after_rollback callbacks.
+      config.active_record.raise_in_transactional_callbacks = true
+    end
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+    config.assets.paths << Rails.root.join("vendor",
+                                           "assets",
+                                           "bower_components",
+                                           "bootstrap-sass-official",
+                                           "assets",
+                                           "fonts")
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf|woff2)\z/
   end
 end
