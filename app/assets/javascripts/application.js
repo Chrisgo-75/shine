@@ -17,6 +17,7 @@
 //= require angular-resource
 //= require angular-messages
 //= require angular-rails-templates
+//= require customers_app
 // Angular-rails-templates assumes our HTML templates are in app/assets/javascripts/templates
 //= require_tree ./templates
 //= require_tree .
