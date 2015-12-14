@@ -110,7 +110,15 @@ app.controller("CustomerDetailController", [
     // var customerId = $routeParams.id;
     // Changed the above local variable to a "$scope" variable so that the View can access the variable.
     $scope.customerId = $routeParams.id;
-    var Customer = $resource('/customers/:customerId.json');
+    // (below) Explicitly indicating which HTTP request to use ... PUT.
+    // (below) So {"customerId": "@customer_id"} instructs Angular to fill in :customerId
+    //         with whatever the value of customer_id is on the object on which we
+    //         are calling $save().
+    // (below) So when we call $save() on $scope.customer, angular will look in $scope.customer.customer_id to
+    //         create the URL to send back to the server, using the PUT HTTP method.
+    var Customer = $resource('/customers/:customerId.json',
+                             {"customerId": "@customer_id"},
+                             {"save": { "method": "PUT" }});
 
     // Below is a asynchronous call.
     // The object we get back from 'Customer.get' is a "promise" that, when resolved, will set properties on itself
