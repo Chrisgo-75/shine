@@ -6,6 +6,7 @@
     "angular-route": "latest",
     "angular-mocks": "latest",
     "angular-resource": "latest",
-    "angular-messages": "latest"
+    "angular-messages": "latest",
+    "angular-bootstrap": "latest"
   }
 }
